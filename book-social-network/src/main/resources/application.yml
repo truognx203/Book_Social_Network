@@ -1,0 +1,59 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/book_social_network
+    username: username
+    password: password
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: truognx2003@gmail.com
+    password: qfbz nsuh relf mglw
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+          ssl:
+            trust: smtp.gmail.com
+        connectiontimeout: 5000
+        timeout: 3000
+        writetimeout: 5000
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: "http://localhost:9090/realms/book-social-network"
+  servlet:
+    multipart:
+      max-file-size: 50MB
+application:
+  security:
+    jwt:
+      secret-key: 566B59703373367639792F423F4528482B4D6251655468576D5A7134743777217A25432A462D4A614E635266556A586E3272357538782F413F4428472B4B6250
+      expiration: 8640000
+  file:
+    uploads:
+      photos-output-path: ./uploads
+  mailing:
+    frontend:
+      activation-url: http://localhost:4200/activate-account
+server:
+  port: 8088
+  servlet:
+    context-path: /api/v1/
+logging:
+  level:
+    org.springframework.core.env: DEBUG
+springdoc:
+  default-produces-media-type: application/json
